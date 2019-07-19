@@ -1,6 +1,6 @@
 {
     "config": {
-        "sock-type": "TCP",
+        "sock-type": "UDP",
         "echo-server-hostname": {
             "help": "Echo server host name.",
             "value": "\"echo.mbedcloudtesting.com\""
@@ -18,21 +18,25 @@
     "target_overrides": {
         "*": {
             "target.network-default-interface-type": "CELLULAR",
+            "target.macros_add": ["CELLULAR_DEVICE=QUECTEL_BC95"],
             "mbed-trace.enable": false,
             "lwip.ipv4-enabled": true,
             "lwip.ethernet-enabled": false,
-            "lwip.ppp-enabled": true,
-            "lwip.tcp-enabled": true,
+            "lwip.ppp-enabled": false,
+            "lwip.tcp-enabled": false,
             "platform.stdio-convert-newlines": true,
-            "platform.stdio-baud-rate": 115200,
-            "platform.default-serial-baud-rate": 115200,
+            "platform.stdio-baud-rate": 9600,
+            "platform.default-serial-baud-rate": 9600,
             "platform.stdio-buffered-serial": true,
             "cellular.debug-at": false,
             "nsapi.default-cellular-plmn": 0,
-            "nsapi.default-cellular-sim-pin": "\"1234\"",
-            "nsapi.default-cellular-apn": 0,
+            "nsapi.default-cellular-sim-pin": 0,
+            "nsapi.default-cellular-apn": "\"spe.inetd.vodafone.nbiot\"",
             "nsapi.default-cellular-username": 0,
-            "nsapi.default-cellular-password": 0
+            "nsapi.default-cellular-password": 0,
+            "QUECTEL_BC95.tx": "PA_2",
+            "QUECTEL_BC95.rx": "PA_3",
+            "QUECTEL_BC95.provide-default": true
         }
     }
 }
